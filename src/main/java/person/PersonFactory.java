@@ -1,6 +1,7 @@
 package person;
 
 import generators.ParamGenerator;
+import person.models.Fio;
 import person.models.Phone;
 import utils.MyMath;
 
@@ -20,14 +21,13 @@ public class PersonFactory {
             phone = new Phone(number);
         }
 
-        return new Person(
-                code,
-                new ParamGenerator().lngeneration(Integer.parseInt(code)),
+        Fio fio = new Fio(new ParamGenerator().lngeneration(Integer.parseInt(code)),
                 new ParamGenerator().fngeneration(Integer.parseInt(code)),
-                new ParamGenerator().mngeneration(Integer.parseInt(code)),
+                new ParamGenerator().mngeneration(Integer.parseInt(code)));
+
+        return new Person(code, fio,
                 new ParamGenerator().GenPh(Integer.parseInt(code)),
-                new ParamGenerator().gen_Ap(Integer.parseInt(code)),
-                phone
-        );
+                new ParamGenerator().gen_Ap(Integer.parseInt(code)))
+                .setPhone(phone);
     }
 }

@@ -1,5 +1,6 @@
 package person;
 
+import person.models.Fio;
 import person.models.Phone;
 import person.models.Physical;
 import person.models.appearance.Appearance;
@@ -7,27 +8,37 @@ import person.models.appearance.Appearance;
 public class Person {
 
     private String id;
-    private String lastName;
-    private String firstName;
-    private String middleName;
+    private Fio fio;
     private Physical phys;
     private Appearance appearance;
     private Phone phone;
 
-    public Person(String id, String lastName, String firstName, String middleName,
-                  Physical phys, Appearance appearance, Phone phone) {
+
+    public Person(String id, Fio fio,
+                  Physical phys, Appearance appearance) {
         this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.middleName = middleName;
+        this.fio = fio;
         this.phys = phys;
         this.appearance = appearance;
+
+    }
+
+    public Person setPhone(Phone phone) {
         this.phone = phone;
+        return this;
     }
 
     @Override
     public final String toString() {
-        return id + "\n" + lastName + "\n" + firstName + "\n" +
-                middleName + "\n" + phys + "\n" + appearance + "\n" + phone;
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder
+                .append(id).append("\n")
+                .append(fio).append("\n")
+                .append(phys).append("\n")
+                .append(appearance).append("\n")
+                .append(phone).append("\n")
+                .toString();
     }
+
+
 }
