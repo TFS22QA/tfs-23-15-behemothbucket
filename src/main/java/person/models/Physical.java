@@ -1,6 +1,6 @@
 package person.models;
 
-public class Physical extends Param {
+public class Physical extends PersonParameters {
 
     private final int age;
     private final int weight;
